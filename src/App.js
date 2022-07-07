@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Formulario from "./components/Formulario"
+import Listado from "./components/Listado"
 import Pregunta from "./components/Pregunta"
 function App() {
   const [presupuesto, setPresupuesto] = useState(0)
@@ -27,7 +28,9 @@ function App() {
               <div className='one-half column'>
                 <Formulario agregarNewGasto={agregarNewGasto} />
               </div>
-              <div className='one-half column'>2</div>
+              <div className='one-half column'>
+                <Listado gastos={gastos} />
+              </div>
             </div>
           )}
         </div>
