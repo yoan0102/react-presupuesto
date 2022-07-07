@@ -1,16 +1,26 @@
 import { useState } from "react"
+import Error from "./Error"
 
 const Formulario = () => {
   const [name, setName] = useState("")
   const [cantidad, setCantidad] = useState(0)
+  const [error, setError] = useState(false)
 
   const agregarGasto = (e) => {
     e.preventDefault()
+
+    if (cantidad < 1 || isNaN(cantidad) || name.trim() === "") {
+      setError(true)
+      return
+    }
   }
   return (
     <>
       <form onSubmit={agregarGasto}>
         <h2>Agrega tus gastos aquí</h2>
+        {error ? (
+          <Error msg='Ambos campos son obligatorios o Presupuesto Incorrecto' />
+        ) : null}
         <div className='campo'>
           <label htmlFor='nameGasto'>Nombre Gasto</label>
           <input
